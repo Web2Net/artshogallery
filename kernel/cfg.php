@@ -18,13 +18,11 @@
     define('TABLE_TEMP_ITEMS','items_temp');
 // /Таблици связанные с товарами   
 	
-  //  define('DB_HOST', 'h27.hvosting.ua');
+
     define('DB_HOST', 'localhost');    
     define('DB_NAME', 'artsho');
-//    define('DB_NAME', 'elmir2015y_artsh');
-    define('DB_USER', 'artsho-man');    
-//    define('DB_PASS', 'H2s4sd+3sDx!');
-    define('DB_PASS', 'bmnF9YWXz');  
+    define('DB_USER', 'root');    
+    define('DB_PASS', '');  
     
     define('USER_IP', getenv ("REMOTE_ADDR"));
     define('PAGE_REF', getenv("HTTP_REFERER"));    
