@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<?=CHARSET?>" />
+<title><?=$meta["title"]?></title>
+<meta name="description" content="<?=$meta["description"]?>" />
+<meta name="keywords" content="<?=$meta["keywords"]?>" />
+ <link rel="stylesheet" href="/design/font/Minion-Cyrillic-Bold/Minion-Cyrillic-Bold.css" type="text/css" charset="utf-8" />
+<link media="all" href="/design/css/site-main.css" type="text/css" rel="stylesheet"/>
+
+<script type="text/javascript" src="/design/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="/design/js/jquery.jcarousellite.js"></script>
+
+<!-- img_slimbox -->
+<script type="text/javascript" src="/lib/slimbox/js/slimbox2.js"></script>
+<link rel="stylesheet" href="/lib/slimbox/css/slimbox2.css" type="text/css" media="screen" />
+<!-- /img_slimbox -->
+
+<!-- mod_message -->
+<link rel="stylesheet" href="/site/message/design/style.css">
+<script src="/site/message/design/feedback.js"></script>
+<!-- /mod_message -->
+
+<!-- mod_banner -->
+<link rel="stylesheet" href="/site/banner/design/bxslider/jquery.bxslider.css">
+<script src="/site/banner/design/bxslider/jquery.bxslider.min.js"></script>
+<!-- /mod_banner -->
+
+<script type="text/javascript" src="/design/js/debug.js"></script>
+
+
+<!-- search_live -->
+<link rel="stylesheet" href="<?=PATH_SITE_DESIGN?>/search_live/jquery-ui.css">
+<script src="<?=PATH_SITE_DESIGN?>/search_live/jquery-ui.js"></script>
+
+<script>
+  $(function() {
+    var availableTags = [
+"Пример",
+"Пример"
+<?
+/*
+$key_words = Search::getKeyWordsForLiveSearch();
+if($key_words != NULL)
+{
+    foreach($key_words as $key=>$word)
+    {
+	    echo '"'.$word['caption_full'].'",';	
+	}	
+}
+*/
+?>
+    ];
+    $( "#tags" ).autocomplete({
+      source: availableTags
+    });
+  });
+</script>
+
+
+</head>
+<body>
+<img src="/design/img/shapka.jpg" class="bg" />
+<div id="content">
+    <div id="body" align="center">
+        <div style="width:1020px;">
+            <div class="wrap_nav_second" style="float:left;"><a id="link_feedback" href="#feedback" class="nav_second"><?=NOTE_MEMBER?></a></div>
+            <div class="wrap_nav_second" style="float:left;"><a id="catalog" href="/userfiles/file/Catalogue_ArtSho.pdf" class="nav_second"><?=CATALOG_ONLINE?></a></div>
+			<div class="wrap_lang_switch"><?include "site/lang/tpl/lang_switch.tpl.htm";?></div>
+			<div class="wrap_nav_second"><a href="https://www.facebook.com/Artsho-Gallery-1750814405174511/" class="nav_second" target="_blank"><img src="/design/img/fb.png" style="height:20px;margin-left:-15px;" /></a></div>
+			<div class="wrap_nav_second"><a href="/art/stranitsy/informatsiya/189-kontakty" class="nav_second"><?=LINK_CONTACTS?></a></div>
+			
+			<div class="wrap_logo"><a href="/"><img src="/design/img/logo.png" style="width:250px;" /></a></div>
+<?if($GLOBALS["mod"]=="main"){}else{include "site/main/tpl/art-main-menu.tpl.htm";}?>
+        </div>
+<?$bckgrd = ($GLOBALS["mod"]=="main" ? "" : "background-color:white;");?>
+        <table class="wrap_content_main" style="<?=$bckgrd?>">
+            <tr>
+                <td><?=$c_cont?></td>
+            </tr>
+        </table>
+
+        <div align="center" style="padding:30px 20px 10px 20px;"><a href="/art/stranitsy/informatsiya/189-kontakty" class="nav_main"><?=LINK_CONTACTS?></a></div>
+        
+        
+
+<!-------------------------------------------------------->
+<?include "site/message/tpl/form_feedback.tpl.htm"?>
+   
+    
+    
+    
+    </div>
+	<div class="br_10"></div>
+	
+	<div style="text-align:left;padding-left:10px;">
+<!-- MyCounter v.2.0 -->
+ <script type="text/javascript"><!--
+my_id = 163559;
+my_width = 88;
+my_height = 31;
+my_alt = "MyCounter - счётчик и статистика";
+//--></script>
+<script type="text/javascript"
+  src="https://get.mycounter.ua/counter2.0.js">
+</script><noscript>
+<a target="_blank" href="http://mycounter.ua/"><img
+src="https://get.mycounter.ua/counter.php?id=163559"
+title="MyCounter - счётчик и статистика"
+alt="MyCounter - счётчик и статистика"
+width="88" height="31" border="0" /></a></noscript>
+<!--/ MyCounter -->
+    </div>
+	
+</div>
+
+
+
+ <div id="debug" style="height:1px;position:absolute;z-index:77;top:5px;right:5px;" align="right"><?=$GLOBALS['DEBUG']?></div>
+        <div id="debug_sql" style="height:1px;position:absolute;z-index:77;top:5px;left:5px;" align="left"><?=$GLOBALS['DEBUG_SQL']?></div>
+</body>
+</html>

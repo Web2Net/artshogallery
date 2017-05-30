@@ -1,0 +1,119 @@
+<?//SYS::varDump(PAGE_URL,__FILE__,__LINE__,'PAGE_URL');?>
+<style>
+.wrap_catalog{
+    padding:0px; margin:7px auto;
+    width:960px; min-height:100px;
+    text-align:center;
+
+}
+.wrap_catalog_sell{
+    height:230px;
+    float:left;
+    background-color:#fff;
+    margin:0px 15px 7px 0px;
+    border:0px solid orangered;
+    padding:4px 0px 7px 0px;
+}
+.wrap_catalog_sell:hover{
+     -webkit-box-shadow: 0 15px 10px -10px rgba(0,0,0,0.5), 0 1px 4px rgba(0,0,0,0.3), 0 0 40px rgba(0,0,0,0.1) inset;
+     -moz-box-shadow: 0 15px 10px -10px rgba(0,0,0,0.5), 0 1px 4px rgba(0,0,0,0.3), 0 0 40px rgba(0,0,0,0.1) inset;
+     box-shadow: 0 15px 10px -10px rgba(0,0,0,0.5), 0 1px 4px rgba(0,0,0,0.3), 0 0 40px rgba(0,0,0,0.1) inset;
+}
+.buy{display:none;}
+
+.wrap_catalog_sell:hover td .buy{
+    display:block;
+}
+.wrap_catalog_sell:hover td .price{
+    display:block;
+}
+.wrap_catalog_sell:hover a{
+    text-decoration:none;
+}
+.view_grid{
+    width:225px;   
+}
+.view_list{
+    width:99%;
+    text-align:left;
+    padding-left:10px;
+}
+.price span {
+background-color: #f5f5f5;
+border-left: 2px solid #7b7b7b;
+padding: 5px;
+font: bold 25px Arial;
+}
+.price span font {
+font-size: 12px;
+vertical-align: super;
+}
+</style>
+
+<?
+if(isset($_SERVER['REQUEST_URI'])){
+$seodata = explode("/",$_SERVER['REQUEST_URI']);
+$mod = $seodata[1];
+$tag1 = $seodata[2];
+$tag2 = $seodata[3];    
+$param = $seodata[4];
+}
+?>
+
+<?if($param == "all"){?>
+<div class="corn polosa" style="padding-left:20px;"><a href="/<?=$GLOBALS["mod"]?>/<?=$GLOBALS["tag1"]?>/<?=$GLOBALS["tag2"]?>" title="<?=BUTT_SHOW_HIT?>"><?=BUTT_SHOW_HIT?></a></div>
+<?}else{?>
+<div class="corn polosa" style="padding-left:20px;"><a href="/<?=$GLOBALS["mod"]?>/<?=$GLOBALS["tag1"]?>/<?=$GLOBALS["tag2"]?>/all" title="<?=BUTT_SHOW_ALL?>"><?=BUTT_SHOW_ALL?></a></div>
+<?}?>
+<!--
+<div class="corn polosa">
+    <a href="../<?=$all_tag_list[str_replace(";","",$tag2_data['connect'])]['seolink']?>"><?=stripslashes($all_tag_list[str_replace(";","",$tag2_data['connect'])]['caption'])?></a> » <?=$tag2_data['caption']?>
+</div>
+-->
+
+
+
+<?shuffle($item_list);?>
+<div class="wrap_catalog" style="height:675px;width:990px; overflow: auto;padding:0px 5px 0px 20px;">
+<?if($item_list!=NULL){?>
+<?foreach($item_list as $key=>$val){?>
+<?
+$img1=ART_ITEM_IMG_PATH."/".$val["id"]."/1m.png";
+if(!file_exists(getenv("DOCUMENT_ROOT").$img1))$img1="/design/img/noimage_740x480.png";
+?>
+    <div class="wrap_catalog_sell view_grid" align="center">
+		<div style="margin-bottom:12px;height:224px;overflow:hidden;">
+<a href="/<?=$GLOBALS["mod"]?>/<?=$GLOBALS["tag1"]?>/<?=$GLOBALS["tag2"]?>/<?=$val["id"]?>-<?=$val["seolink"]?>" title="<?=W_MORE?>">
+<img src="<?=$img1?>" width="224" style="margin-bottom:7px;" />
+</a>
+<div  style="text-align:left;padding-left:5px;">
+<a href="/<?=$GLOBALS["mod"]?>/<?=$GLOBALS["tag1"]?>/<?=$GLOBALS["tag2"]?>/<?=$val["id"]?>-<?=$val["seolink"]?>" title="<?=W_MORE?>">
+<?=$val["caption"]?></a>
+</div>
+
+<?$item_data2['companion_connect']=$val['companion_connect'];?>
+
+<?if($item_data2['companion_connect']!=""){
+$companion_con=explode(";",substr($item_data2['companion_connect'],1,-1));}
+if($companion_con){foreach($companion_con as $key=>$valg){?>
+<?
+$companion_data=Info::itemDataId($valg);
+$companion_list[$companion_data['id']]=$companion_data;
+}}?>
+
+<?
+$item_list2=$companion_list;
+if($item_list2!=NULL){?>
+<?foreach($item_list2 as $key=>$valc){?>
+<div style="text-align:left;padding-left:5px;"><?=$valc["caption"]?></div>
+
+<?}}
+unset($companion_list);?>
+
+<div style="text-align:left;padding-left:5px;"><?=$val["desc_short"]?></div>
+</div>
+</div>
+<?}}?>
+</div>
+
+<br><br>

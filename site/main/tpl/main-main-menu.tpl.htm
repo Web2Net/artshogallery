@@ -1,0 +1,140 @@
+<div style="width:100%;opacity:1!important;margin-bottom:460px;">
+<script type="text/javascript">
+function rnd(min, max)
+{
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+var cs=1; var ix=new Array();
+
+</script>
+<style>
+.wrap_main{
+    padding:0px; margin:7px auto;
+    min-height:100px;
+    text-align:center;
+
+}
+.wrap_mainmenu{
+
+    float:left;
+    margin:0px 0px 0px 0px;
+    border:0px solid orangered;
+    padding:0px 0px 0px 0px;
+}
+.wrap_mainmenu a.wrap_mainmenu_image,.wrap_mainmenu .podloga{
+display:none;
+}
+.wrap_mainmenu:hover a.wrap_mainmenu_image, .wrap_mainmenu_hover a.wrap_mainmenu_image{
+display:block;
+
+margin-top:-90px;
+}
+.wrap_mainmenu:hover .podloga, .wrap_mainmenu_hover .podloga {
+display:block;
+}
+.wrap_mainmenu:hover a.nav_main,.wrap_mainmenu_hover a.nav_main{
+display:block;
+width:200px;
+height:200px;
+color:#E20019;
+text-decoration:underline;
+background-image:none!important;
+margin-top:-100px;
+margin-left:-20px;
+}
+.wrap_mainmenu:hover a,.wrap_mainmenu_hover a{
+    text-decoration:none;
+}
+.view_grid{
+    width:200px;   
+}
+.view_list{
+    width:99%;
+    text-align:left;
+    padding-left:10px;
+}
+
+</style>
+
+<div style="width:100%;">
+
+<?
+$main_main_menu=Art::tagListShowConnect(1);
+//SYS::varDump($main_main_menu,__FILE__,__LINE__,"main_main_menu");
+?>
+<!--
+    <table style="margin-top:20%;border:0px solid #fff;">
+        <tr>
+<?
+$i=0;
+if($main_main_menu!=NULL){foreach($main_main_menu as $key=>$val){
+	$i++;
+	$bgmmm = ($i%2==0 ? "url('/design/img/bg_ch.jpg')" : "url('/design/img/bg_nch.jpg')");
+	if($val['seolink'] == "avtor"){}
+	else{
+?>
+            <td style="padding:0px;background-image:<?=$bgmmm?>;width:200px;height:115px" align="center" valign="middle">
+                <a class="nav_main" style="color:#fff;" href="/art/rubrika/<?=$val['seolink']?>">
+                    <?=$val['caption']?>
+                </a>
+            </td>       
+<?}}}?>      
+        </tr>
+    </table>
+-->
+
+<div class="wrap_main" style="width:1020px;padding:0px 0px 0px 0px;margin-top:20%;">
+<?$i=0;if($main_main_menu!=NULL){?>
+<?foreach($main_main_menu as $key=>$val){?>
+<?
+$i++;
+$bgmmm = ($i%2==0 ? "url('/design/img/bg_ch.jpg')" : "url('/design/img/bg_nch.jpg')");
+$img1="/design/img/main_menu/".$val['seolink']."/1.jpg";
+if(!file_exists(getenv("DOCUMENT_ROOT").$img1))$img1="/design/img/noimage_450x450.png";
+?>
+    <div class="wrap_mainmenu view_grid" align="center" id="el<?=$i?>">
+
+<a href="/art/rubrika/<?=$val['seolink']?>" class="wrap_mainmenu_image">
+<img id="<?=$val['seolink']?>" src="<?=$img1?>?<?=time()?>" width="200" style="" />
+</a>
+<img src="/design/img/main_menu/podloga.jpg" width="200" class="podloga" />
+<a class="nav_main" href="/art/rubrika/<?=$val['seolink']?>" style="z-index:10;padding-top:45px;text-align:center;vertical-align:center;display:block;background-image:<?=$bgmmm?>;width:200px;height:65px;">
+<?=$val["caption"]?></a>
+
+
+<script type="text/javascript">
+    function blim<?=$val['seolink']?>(xy){
+    //cs=rnd(1,5);
+    
+    cs=xy;
+    //var rubimg=$('#<?=$val['seolink']?>').attr('src');
+    var rubimg="<?=$img1?>?<?=time()?>";    
+    rubimg=rubimg.replace('1',cs);
+    //alert(rubimg);
+    var timeout=setTimeout(function() { $('#<?=$val['seolink']?>').stop().animate({opacity: "0"}, 'slow');},2500);
+    $('#<?=$val['seolink']?>').attr('src', rubimg); 
+    $('#<?=$val['seolink']?>').stop().animate({opacity: "1"}, 'slow');
+    $('a.nav_main').animate({opacity: "1"}, 'slow');    
+    
+    //if(cs>5){cs=1;}
+    }    
+    $(document).ready(function() {
+    ix['<?=$val['seolink']?>']=2;
+    var timer=setInterval("if(ix['<?=$val['seolink']?>']>5||ix['<?=$val['seolink']?>']<1){ix['<?=$val['seolink']?>']=1;}blim<?=$val['seolink']?>(ix['<?=$val['seolink']?>']);ix['<?=$val['seolink']?>']++;",3000);
+    });
+</script>
+
+</div>
+<?}}?>
+</div>
+
+</div>
+<script type="text/javascript">   
+    $(document).ready(function() {
+    $('#el3').addClass('wrap_mainmenu_hover');     
+    var timeout=setTimeout(function() { $('#el3 a.wrap_mainmenu_image img').stop().animate({opacity: "0"}, 'slow');},2500);
+    $(".wrap_mainmenu").hover(function() {
+    $('#el3').removeClass('wrap_mainmenu_hover'); 
+    });
+    });
+</script>

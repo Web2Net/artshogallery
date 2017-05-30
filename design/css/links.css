@@ -1,0 +1,101 @@
+a{
+    font-size:15px;
+    line-height:17px;
+    font-family:Times New Roman, CONSTANTIA, Tahoma, Arial, sans-serif;
+/*    font-weight: 500;  */
+    color:#000;
+    outline: none;
+/*text-decoration:none;*/
+}
+a:visited{
+    color:#000;
+}
+a:hover{
+    color:#000;text-decoration: underline;
+}
+a img{
+	border: none;
+}
+a.nav_main{
+    font-size:19px;
+    font-family:Times New Roman,CONSTANTIA, Tahoma, Arial, sans-serif;
+    white-space:nowrap;
+/*    font-weight: 500;  */
+    color:#fff;
+    outline: none;
+    text-decoration: underline;
+    border-bottom:solid 0px #fff;
+}
+a.nav_main:hover{
+    font-size:19px;
+    font-family:Times New Roman,CONSTANTIA, Tahoma, Arial, sans-serif;
+/*    font-weight: 500;  */
+    color:#fff;
+    outline: none;
+    text-decoration: none;
+    border-bottom:solid 0px #d91219;
+}
+
+.wrap_nav_second{
+    float:right;
+    padding:5px 20px 5px 20px;margin-top:25px;
+}
+a.nav_second{
+    color:white;font-size:18px;text-decoration:underline;
+}
+
+/********  btn  *********/
+a.btn{
+    font-weight: 900;
+    font-size:100%;
+    color: white;
+    text-decoration: none;
+    padding: .6em 1em calc(.6em + 3px);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;;
+    background: #2155AB;
+    box-shadow: -1px -3px #003b71 inset;
+    transition: 0.3s;
+} 
+a.btn:hover{
+    background: #0066b0; 
+}
+a.btn:active {
+   background: #2155AB;
+   box-shadow: 0 3px #003b71 inset;
+}
+a.btn_blue {
+    font-weight: 900;
+    font-size:16px;
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 15px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;;
+    background: #2155AB;
+    box-shadow: -1px -3px #003b71 inset;
+    transition: 0.3s;
+	border: solid 1px #031873;
+	background: #2155AB; /*цвет фона кнопки для браузеров без поддержки CSS3*/
+	background: -webkit-gradient(linear, left top, left bottom, from(#0066b1), to(#002d5c)); /* для Webkit браузеров */
+	background: -moz-linear-gradient(top,  #0066b1,  #002d5c); /* для Firefox */
+        background-image: -o-linear-gradient(top,  #0066b1,  #002d5c); /* для Opera 11 */
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#0066b1', endColorstr='#002d5c'); /* фильтр для IE */
+}
+a.btn_blue:hover {
+	background: #f47c20;
+	background: -webkit-gradient(linear, left top, left bottom, from(#002d5c), to(#002d5c));
+	background: -moz-linear-gradient(top,  #002d5c,  #0066b1);
+        background-image: -o-linear-gradient(top,  #002d5c,  #0066b1);/* для Opera 11 */
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#002d5c', endColorstr='#0066b1');
+}
+a.btn_blue:active {
+	background: -webkit-gradient(linear, left top, left bottom, from(#0066b1), to(#002d5c));
+	background: -moz-linear-gradient(top,  #0066b1,  #002d5c);
+        background-image: -o-linear-gradient(top,  #0066b1,  #002d5c);/* для Opera 11 */
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#0066b1', endColorstr='#002d5c');
+        box-shadow: 0 3px #003b71 inset;
+}
+/******** /btn  *********/

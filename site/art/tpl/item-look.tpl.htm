@@ -1,0 +1,220 @@
+<?if(isset($_SERVER['REQUEST_URI'])){
+$seodata = explode("/",$_SERVER['REQUEST_URI']);
+$mod = $seodata[1];
+$tag1 = $seodata[2];
+$tag2 = $seodata[3];    
+$param = $seodata[4];
+}?>
+
+<?
+if(strlen($item_data['caption']) > 100){
+    $string = strip_tags($item_data['caption']);
+    $string = substr($string, 0, 100);
+    $string = rtrim($string, "!,.-:;+");
+    $string = substr($string, 0, strrpos($string, ' '));
+    $string = $string." ...";
+}
+else{
+    $string = $item_data['caption'];
+}
+?>
+
+
+<div class="corn" align="left">
+<a href="../<?=$all_tag_list[str_replace(";","",$item_data['connect'])]['seolink']?>"><?=stripslashes($all_tag_list[str_replace(";","",$item_data['connect'])]['caption'])?></a> » <?=$string?>
+</div>
+
+<style>
+.desc li{margin-left:20px;margin-bottom:7px;}
+.art {line-height:18px;text-align:justify;padding:10px;}
+</style>
+
+<div class="art" style="height:650px;width:1000px; overflow-y: auto;overflow-x: hidden;padding:7px 10px 0px 10px;">
+
+<table><tr><td width="440" valign="top">
+
+
+<?
+$img1=ART_ITEM_IMG_PATH."/".$item_data['id']."/1o.png";
+//$img2=ART_ITEM_IMG_PATH."/".$item_data['id']."/2s.png";
+//$img3=ART_ITEM_IMG_PATH."/".$item_data['id']."/3s.png";
+//$img4=ART_ITEM_IMG_PATH."/".$item_data['id']."/4s.png";
+//$img5=ART_ITEM_IMG_PATH."/".$item_data['id']."/5s.png";
+
+$img2=ART_ITEM_IMG_PATH."/inter/2i.jpg";
+$img3=ART_ITEM_IMG_PATH."/inter/3i.jpg";
+$img4=ART_ITEM_IMG_PATH."/inter/4i.jpg";
+
+if(!file_exists(getenv("DOCUMENT_ROOT").$img1))$img1="/design/img/noimage_740x480.png";
+if(!file_exists(getenv("DOCUMENT_ROOT").$img2))$img2="";
+if(!file_exists(getenv("DOCUMENT_ROOT").$img3))$img3="";
+if(!file_exists(getenv("DOCUMENT_ROOT").$img4))$img4="";
+?>
+
+<!-- img_fancybox -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script type="text/javascript" src="/lib/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+<script type="text/javascript" src="/lib/fancybox/jquery.easing-1.3.pack.js"></script>
+<script type="text/javascript" src="/lib/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+<link rel="stylesheet" href="/lib/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
+
+<!-- /img_fancybox -->
+
+<script type="text/javascript">
+    $(document).ready(function() {
+    $("a.fbox").fancybox();
+    });
+</script>
+
+<table style="float:left;width:356px;margin-right:12px;" cellpadding="0" cellspacing="0"><tr><td>
+<div class="image">
+<a class="fbox" href="#inlinez" rel="interior"title="<?=$item_data['caption']?>"><img id="prodimg1" alt="" src="<?=$img1?>" width="500" height="" border="1" /></a>
+<div style="display: none;"><div id="inlinez">
+<img src="<?=str_replace("m.png",".png",$img1)?>" />
+</div></div>
+</div>
+<div class="br_20"></div>
+<div class="br_20"></div>
+<!--
+<div class="image" style="margin:15px 0px;width:450px;" align="center">
+<?if($img2!=""){?><a href="<?=str_replace("s.png",".png",$img2)?>" title="<?=W_CLIK_BIG?>" rel="lightbox2[yoo-gallery-inter]"><img id="prodimg2" src="<?=$img2?>" width="120" height="80" border="1" style="margin-right:15px;" /></a><?}?>
+<?if($img3!=""){?><a href="<?=str_replace("s.png",".png",$img3)?>" title="<?=W_CLIK_BIG?>" rel="lightbox2[yoo-gallery-inter]"><img id="prodimg3" src="<?=$img3?>" width="120" height="80" border="1" style="margin-right:15px;" /></a><?}?>
+<?if($img4!=""){?><a href="<?=str_replace("s.png",".png",$img4)?>" title="<?=W_CLIK_BIG?>" rel="lightbox2[yoo-gallery-inter]"><img id="prodimg4" src="<?=$img4?>" width="120" height="80" border="1" style="margin-right:15px;" /></a><?}?>
+</div>
+-->
+
+
+
+<?if($tag2 == "zhivopis" || $tag2 == "grafika"){?>
+<div style="margin:15px 0px;">
+<a class="fbox" href="#inline1" rel="interior"><img style="float: left; margin: 8px 0 0 25px;" src="<?=$img2?>" width="120" height="80"></a> &nbsp; 			
+<div style="display: none;"><div id="inline1">
+<img src="<?=$img2?>" />
+<img class="primary-pic" style="width: 170px; z-index: 9999; position: absolute; left: 30%; bottom: 350px;box-shadow: 3px 3px 4px #000;" itemprop="image" src="<?=$img1?>" title="<?=$item_data['caption']?>" alt="<?=$item_data['caption']?>">	
+</div></div>
+
+<a class="fbox" href="#inline2" rel="interior"><img style="float: left; margin: 8px 0 0 25px;" src="<?=$img3?>" width="120" height="80"></a> &nbsp; 			
+<div style="display: none;"><div id="inline2">
+<img src="<?=$img3?>" />
+<img class="primary-pic" style="width: 170px; z-index: 9999; position: absolute; left: 39%; bottom: 350px;box-shadow: 3px 3px 4px #000;" itemprop="image" src="<?=$img1?>" title="<?=$item_data['caption']?>" alt="<?=$item_data['caption']?>">	
+</div></div>
+
+<a class="fbox" href="#inline3" rel="interior"><img style="float: left; margin: 8px 0 0 25px;" src="<?=$img4?>" width="120" height="80"></a> &nbsp; 			
+<div style="display: none;"><div id="inline3">
+<img src="<?=$img4?>" />
+<img class="primary-pic" style="width: 170px; z-index: 9999; position: absolute; left: 38%; bottom: 330px;box-shadow: 3px 3px 4px #000;" itemprop="image" src="<?=$img1?>" title="<?=$item_data['caption']?>" alt="<?=$item_data['caption']?>">	
+</div></div>
+<?}else{}?>
+
+
+			
+</div>
+
+<div style="clear:doth;"></div>
+<?
+$audio1="/audio/art/item/".$item_data['id']."/1.mp3";
+if(file_exists(getenv("DOCUMENT_ROOT").$audio1)){
+?>
+<div style="margin-top:120px;padding:10px 0px;" align="center">
+<img src="/design/icon/Music_32x32.png" width="32" height="" border="0" style="margin-right:10px;" />
+<audio controls=""><source id="audi1" src="<?=$audio1?>"></audio>
+</div>
+<?}?>
+<div style="margin-top:70px;padding-top:25px;" align="center">
+<a id="link_feedback2" style="font-size: 30px;font-weight:normal;color: #000;text-decoration:underline;" href="#"><?=W_BUY?></a>
+</div>
+</td></tr></table>
+
+
+
+</td><td width="560" valign="top">
+
+<?if($item_data['companion_connect']!=""){?>
+<div align="left" style="">
+
+<?if($item_data['companion_connect']!=""){
+$companion_con=explode(";",substr($item_data['companion_connect'],1,-1));}
+if($companion_con){foreach($companion_con as $key=>$valg){?>
+<?
+$img1=INFO_ITEM_IMG_PATH."/".$valg."/1m.png";
+if(!file_exists(getenv("DOCUMENT_ROOT").$img1))$img1="/design/img/noimage_740x480.png";
+$companion_data=Info::itemDataId($valg);
+$companion_list[$companion_data['id']]=$companion_data;
+}}?>
+
+<?
+$item_list=$companion_list;
+if($item_list!=NULL){?>
+<?foreach($item_list as $key=>$val){?>
+<?
+$img1=INFO_ITEM_IMG_PATH."/".$val["id"]."/1m.png";
+if(!file_exists(getenv("DOCUMENT_ROOT").$img1))$img1="/design/img/noimage_740x480.png";
+$tag1_list=Info::tagListShowLevel(1);
+$tag2_list=Info::tagListShowLevel(2);
+
+?>
+
+
+<div style="padding:0px 10px;" align="left">
+<a style="font-size:30px;text-decoration:underline;" href="/info/<?=$tag1_list[str_replace(";","",$tag2_list[str_replace(";","",$val['connect'])]['connect'])]['seolink']?>/<?=$tag2_list[str_replace(";","",$val['connect'])]['seolink']?>/<?=$val["id"]?>-<?=$val["seolink"]?>" title="<?=W_MORE?>">
+<?=$val["caption"]?></a></div>
+<?$companion2_con=$val["companion_connect"];?>
+<?$companion_id=$val["id"];?>
+
+
+<?}}?>
+<?}?>
+
+<div align="left" style="padding:0px 10px;">
+<h1 style="font-size: 26px;font-weight:normal;color: #000;margin:15px 0px;">
+<?=$item_data['caption']?>
+</h1>
+</div>
+<div class="desc" style="color: black;margin-bottom:25px;padding:0px 10px;">
+<div style="color: black;margin-bottom:15px;text-align:justify;">
+<?=$item_data["desc_short"]?>
+</div></div>
+
+
+
+
+<div align="center">
+<?
+$companion_list2=Art::itemListCompShow($companion_id);?>
+<?shuffle($companion_list2);?>
+<div class="wrap_catalog" style="width:500px;height:500px;overflow:auto;">
+<?
+$item_list2=$companion_list2;
+if($item_list2!=NULL){?>
+<?foreach($item_list2 as $key=>$val){?>
+<?
+$img1=ART_ITEM_IMG_PATH."/".$val["id"]."/1m.png";
+if(!file_exists(getenv("DOCUMENT_ROOT").$img1))$img1="/design/img/noimage_740x480.png";
+$tag1_list=Art::tagListShowLevel(1);
+$tag2_list=Art::tagListShowLevel(2);
+
+?>
+
+<div align="center" style="width:157px;height:165px;float:left;">
+<a style="width:150px;white-space:pre-wrap;" href="/art/<?=$tag1_list[str_replace(";","",$tag2_list[str_replace(";","",$val['connect'])]['connect'])]['seolink']?>/<?=$tag2_list[str_replace(";","",$val['connect'])]['seolink']?>/<?=$val["id"]?>-<?=$val["seolink"]?>" title="<?=W_MORE?>">
+<img src="<?=$img1?>" width="150" style="margin-bottom:5px;" /><br><?=$val["caption"]?></a>
+<div style="color: #000;text-align:center;font-size:12px;">
+<?=$val["desc_short"]?>
+</div>
+
+</div>
+
+<?}}?>
+
+</div>
+
+
+</td></tr></table>	
+</div>
+
+
+<br><br><br>
+
+
+</div>
+</div>

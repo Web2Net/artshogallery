@@ -1,0 +1,104 @@
+<style>
+.wrap_menu_main{
+    width:1020px;
+    background-color:#fff;
+    margin-top:20px;
+    opacity:0.8;
+    padding-bottom:5px;
+    
+}	
+.navi_main{
+padding-top:17px;
+    font-weight:normal;
+    font-size:18px;
+    text-decoration:underline;	
+}
+.shadow_bottom{
+   box-shadow: 0px -4px 12px -2px rgba(0, 0, 0, 0.4) inset;
+}
+
+</style>
+
+
+<div class="wrap_menu_main shadow_bottom">
+
+
+<?
+$a=0;
+$all_tag_list=Art::tagListShowLevel(); 
+//$main_menu=Art::tagListShowLevel(2);
+$main_menu=Art::tagListShowConnect(1);
+$main_menu2=Info::tagListShowConnect(1);
+SYS::varDump($main_menu,__FILE__,__LINE__,"main_menu");
+?>
+
+    <table class="wrap_menu_main">
+        <tr>
+<?
+$i=0;
+if($main_menu!=NULL){foreach($main_menu as $key=>$val){
+$i++;	
+?>
+            <td class="nav_main" style="padding:5px 0px 5px 0px;<?if($a>0){?>border-left:0px solid #E8EFF4;width:17%;<?}?>" align="center" valign="bottom">
+<?if(strncmp ($val["seolink"],'http:',5)==0){?>
+                <a class="navi_main" href="<?=$val["seolink"]?>" target="_blank">
+<?}else if(strncmp ($val["seolink"],'#',1)==0){?>
+                <a class="navi_main" href="<?=$val["seolink"]?>" id="link_<?=str_replace('#','',$val["seolink"])?>">
+<?}else{?>
+                <a class="navi_main" href="/art/rubrika/<?=$val['seolink']?>" onmouseover="javascript:showM(<?=$val['id']?>)" onmouseout="javascript:hideM(<?=$val['id']?>)">
+<?}?><?=$val['caption']?></a>
+
+
+    
+<?
+$a++;
+$sub_menu1=Art::tagListShowConnect($val['id']);
+?>
+
+<?if($sub_menu1!=NULL&&count($sub_menu1)>1){?>   
+<div id="submenu_<?=$val['id']?>" class="submenu" onmouseover="javascript:showM(<?=$val['id']?>)" onmouseout="javascript:hideM(<?=$val['id']?>)">
+   
+<div>
+<?foreach($sub_menu1 as $key=>$val){?>
+    <div style="margin:10px 10px;">
+<?if(strncmp ($val["seolink"],'http:',5)==0){?>
+        <a class="navi_main" href="<?=$val["seolink"]?>" target="_blank">
+<?}else if(strncmp ($val["seolink"],'#',1)==0){?>
+        <a class="navi_main" href="<?=$val["seolink"]?>" id="link_<?=str_replace("#",$val["seolink"]);?>">
+<?}else{?>
+        <a class="navi_main" href="/art/<?=$all_tag_list[str_replace(";","",$val['connect'])]['seolink']?>/<?=$val["seolink"]?>" title="<?=W_MORE?>">
+<?}?>
+<?=$val["caption"]?>
+        </a>
+    </div>    
+<?}?>              
+</div>
+
+</div>  
+ <?}?> 
+
+    
+</td>       
+     
+     <?}}?>
+<?
+$main_menu=Info::tagListShowConnect(1);
+SYS::varDump($main_menu,__FILE__,__LINE__,"main_menu2");
+ 
+$i=0;
+if($main_menu!=NULL){foreach($main_menu as $key=>$val){
+$i++;	
+?>
+            <td class="nav_main" style="padding:5px 0px 5px 0px;<?if($a>0){?>border-left:0px solid #E8EFF4;width:15%;<?}?>" align="center" valign="bottom">
+<?if(strncmp ($val["seolink"],'http:',5)==0){?>
+                <a class="navi_main" href="<?=$val["seolink"]?>" target="_blank">
+<?}else if(strncmp ($val["seolink"],'#',1)==0){?>
+                <a class="navi_main" href="<?=$val["seolink"]?>" id="link_<?=str_replace('#','',$val["seolink"])?>">
+<?}else{?>
+                <a class="navi_main" href="/info/rubrika/<?=$val['seolink']?>" onmouseover="javascript:showM(<?=$val['id']?>)" onmouseout="javascript:hideM(<?=$val['id']?>)">
+<?}?><?=$val['caption']?></a>
+   </td> </tr>
+<?}}?>
+
+  </table>
+</div>

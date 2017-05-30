@@ -1,0 +1,35 @@
+<div class="feedback_popup form_feedback">
+	<a class="feedback_close" href="#">Close</a>
+	<h1 id="feedback_title1"><?=FEEDBACK_TITLE?></h1>
+	<h1 id="feedback_title2" style="display:none;"><?=FEEDBACK_TITLE2?></h1>
+	<form method="post" action="/message/feedback" id="feedback_form" style="padding-top:7px;">
+		<input type="text" name="feedback_name" placeholder="<?=FEEDBACK_NAME?>" />
+        <input type="text" name="feedback_phone" placeholder="<?=FEEDBACK_PHONE?>" />
+        <input type="text" name="feedback_email" placeholder="E-mail" />
+        <input type="text" name="feedback_country" placeholder="<?=FEEDBACK_COUNTRY?>" />
+        <input type="hidden" name="feedback_url" value="<?=PAGE_URL?>" />
+        <span style="font: bold 14px Arial, san-serif;line-height:14px;padding-bottom:3px;"><?=FEEDBACK_TEMATITLE?>: </span>
+        <select name="feedback_tema" placeholder="<?=FEEDBACK_TEMATITLE?>"  style="margin-top:5px;">
+        <option class="feedback_tema1" value="3"><?=FEEDBACK_TEMA1?></option>
+        <option class="feedback_tema1" value="4"><?=FEEDBACK_TEMA2?></option>
+        <option class="feedback_tema1" value="9"><?=FEEDBACK_TEMA3?></option>
+        <option class="feedback_tema2" value="5"><?=FEEDBACK_TEMA4?></option>
+        <option class="feedback_tema2" value="8"><?=FEEDBACK_TEMA5?></option>
+        <option class="feedback_tema2" value="9"><?=FEEDBACK_TEMA3?></option>
+        </select>
+        <textarea placeholder="<?=FEEDBACK_MESS?>" name="feedback_mess" id="feedback_mess"></textarea>
+        <div class="both br_10"></div><div align="center">
+		<input type="submit" value="<?=FEEDBACK_ONLINE?>" name="feedback_online"  class="btns" />	</div>
+	</form>
+<!--
+<input type="text" name="form__phone" placeholder="Телефон"  onkeyup="check(this.value)"/>
+<span id="phone" style="display: none; color: #c00;">Минимум 7 цифр</span>
+<script type="text/javascript">
+   function check(phone) {
+    if (phone.length < 7) document.getElementById("phone").style.display = "inline";
+    else document.getElementById("phone").style.display = "none";
+  }
+</script>
+-->
+</div>
+
